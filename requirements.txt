@@ -1,0 +1,15 @@
+pandas
+numpy
+scikit-learn
+sentence_transformers
+transformers
+torch
+jupyter
+Flask
+opendatasets
+pre-commit
+nbqa
+flake8
+virtualenv
+isort
+black[jupyter]

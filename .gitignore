@@ -1,0 +1,6 @@
+# Pycache
+__pycache__
+.idea
+.venv
+/notebook/netflix-shows/netflix_titles.csv
+/notebook/kaggle.json
