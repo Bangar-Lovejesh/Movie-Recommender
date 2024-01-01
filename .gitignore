@@ -1,4 +1,5 @@
 # Pycache
 __pycache__
 .idea
-notebokos/kaggle.json
+notebook/kaggle.json
+notebook/*.csv
