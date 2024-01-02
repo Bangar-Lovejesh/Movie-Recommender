@@ -4,3 +4,4 @@ __pycache__
 .venv
 /notebook/netflix-shows/netflix_titles.csv
 /notebook/kaggle.json
+/movieDB
