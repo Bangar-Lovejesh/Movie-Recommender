@@ -4,5 +4,5 @@ __pycache__
 .venv
 /notebook/**/*.csv
 /notebook/kaggle.json
-/movieDB
+/notebook/the-movies-dataset
 /notebook/*.npy
