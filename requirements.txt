@@ -13,3 +13,9 @@ flake8
 virtualenv
 isort
 black[jupyter]
+psycopg2-binary
+python-dotenv
+SQLAlchemy
+flask-sqlalchemy
+cockroachdb
+sqlalchemy-cockroachdb
