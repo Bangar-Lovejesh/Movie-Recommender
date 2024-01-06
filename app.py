@@ -15,37 +15,22 @@ app = Flask(__name__)
 #         "name": "Movie Name3"
 #     }]
 
-@app.route('/test', methods = ['GET','POST'], strict_slashes=False)
+
+@app.route("/test", methods=["GET", "POST"], strict_slashes=False)
 def test():
     name = "unavailable"
-    if request.method == 'POST':
+    if request.method == "POST":
         print("inside")
-        name = request.get_json()['name'];
+        name = request.get_json()["name"]
 
-        return [{ "id":1,
-                  "name" : name
-        },{
-            "id": 2,
-            "name": name
-        },{
-            "id": 3,
-            "name": name
-        }]
+        return [
+            {"id": 1, "name": name},
+            {"id": 2, "name": name},
+            {"id": 3, "name": name},
+        ]
 
-    return [{"id": 1,
-             "name": name
-             }, {
-                "id": 2,
-                "name": name
-            }, {
-                "id": 3,
-                "name": name
-            }]
+    return [{"id": 1, "name": name}, {"id": 2, "name": name}, {"id": 3, "name": name}]
 
 
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
-
