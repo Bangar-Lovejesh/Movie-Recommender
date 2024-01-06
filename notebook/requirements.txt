@@ -1,0 +1,12 @@
+scikit-learn
+sentence_transformers
+transformers
+torch
+jupyter
+SQLAlchemy
+opendatasets
+pandas
+numpy
+SQLAlchemy
+cockroachdb
+sqlalchemy-cockroachdb
