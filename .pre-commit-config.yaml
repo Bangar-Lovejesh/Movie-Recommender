@@ -21,7 +21,7 @@ repos:
       - id: nbqa-pyupgrade
         args: [ "--py37-plus" ]
       - id: nbqa-isort
-        args: [ "--float-to-top", "--profile=black"]
+        args: [ "--float-to-top" ]
       - id: nbqa-flake8
 
   - repo: https://github.com/pycqa/flake8
