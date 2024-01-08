@@ -1,19 +1,22 @@
 # syntax=docker/dockerfile:1.4
-FROM --platform=$BUILDPLATFORM python:3.10-alpine AS builder
+FROM python:3.10-alpine AS builder
 
-WORKDIR /code
-COPY requirements.txt /code
+WORKDIR /backend
+COPY requirements.txt /backend/requirements.txt
+
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip3 install -r requirements.txt
 
 COPY . .
 
-ENV FLASK_APP app.py
+ENV FLASK_DEBUG 1
+ENV FLASK_APP src/app.py
 ENV FLASK_ENV development
 ENV FLASK_RUN_PORT 8000
 ENV FLASK_RUN_HOST 0.0.0.0
 
 EXPOSE 8000
+CMD ["ls", "-al"]
 
 CMD ["flask", "run"]
 
