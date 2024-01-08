@@ -1,0 +1,62 @@
+[project]
+name = "movie_recommender"  # Required
+
+version = "1.0.0"  # Required
+
+description = "A movie recommender web-app"  # Optional
+
+readme = "README.md" # Optional
+
+requires-python = ">=3.10"
+
+license = { file = "LICENSE.txt" }
+
+keywords = ["Flask", "CockroachDB", "development"]  # Optional
+
+authors = [
+    { name = "Lovejesh Bangar", email = "bangarl@my.yorku.ca" },
+    { name = "Alaa Wardeh", email = "wardehal@my.yorku.ca" }
+]
+
+maintainers = [
+    { name = "Lovejesh Bangar", email = "bangarl@my.yorku.ca" },
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+dependencies = [
+    "Flask",
+    "numpy",
+    "psycopg2-binary",
+    "python-dotenv",
+    "SQLAlchemy",
+    "flask-sqlalchemy",
+    "cockroachdb",
+    "sqlalchemy-cockroachdb",
+]
+[project.urls]
+"Homepage" = "TBD"
+
+
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project.optional-dependencies]
+dev = [
+    "black[jupyter]",
+    "pre-commit",
+    "nbqa",
+    "flake8",
+    "isort",
+    "virtualenv",
+]
+
+[flake8]
+max-line-length = 88
+extend-ignore = ["E203","E501"]
