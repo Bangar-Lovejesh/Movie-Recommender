@@ -16,7 +16,6 @@ ENV FLASK_RUN_PORT 8000
 ENV FLASK_RUN_HOST 0.0.0.0
 
 EXPOSE 8000
-CMD ["ls", "-al"]
 
 CMD ["flask", "run"]
 
