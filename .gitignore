@@ -6,3 +6,4 @@ __pycache__
 /notebook_data_analysis/kaggle.json
 /notebook_data_analysis/*.npy
 /**/.env
+/node_modules/
