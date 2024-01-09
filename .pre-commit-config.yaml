@@ -21,11 +21,23 @@ repos:
       - id: nbqa-pyupgrade
         args: [ "--py37-plus" ]
       - id: nbqa-isort
-        args: [ "--float-to-top", "--profile=black"]
+        args: [ "--float-to-top", "--profile=black" ]
       - id: nbqa-flake8
 
   - repo: https://github.com/pycqa/flake8
     rev: '6.1.0'
     hooks:
       - id: flake8
-        args: [ "-j8"]
+        args: [ "-j8" ]
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: 'v9.0.0-alpha.0'  # Use the sha / tag you want to point at
+    hooks:
+      - id: eslint
+        files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
+        additional_dependencies:
+          - eslint@4.15.0
+          - eslint-config-google@0.7.1
+          - eslint-loader@1.6.1
+          - eslint-plugin-react@6.10.3
+          - babel-eslint@6.1.2
