@@ -1,8 +1,9 @@
-jupyter:
-  build:
-    context: ./notebook_data_analysis
-    dockerfile: Dockerfile
-  ports:
-    - 8888:8888
-  container_name: jupyter_notebook
-  command: "start-notebook.sh --NotebookApp.token="
+services:
+  jupyter:
+    build:
+      context: ./notebook_data_analysis
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+    container_name: jupyter_notebook
+    command: "start-notebook.sh --NotebookApp.token="
