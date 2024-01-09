@@ -1,0 +1,6 @@
+pre-commit
+virtualenv
+isort
+black[jupyter]
+flake8
+nbqa

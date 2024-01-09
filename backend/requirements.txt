@@ -1,11 +1,5 @@
-pre-commit
 Flask
 numpy
-flake8
-nbqa
-virtualenv
-isort
-black[jupyter]
 psycopg2-binary
 python-dotenv
 SQLAlchemy
