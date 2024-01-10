@@ -10,3 +10,5 @@ numpy
 SQLAlchemy
 cockroachdb
 sqlalchemy-cockroachdb
+python-dotenv
+psycopg2-binary
