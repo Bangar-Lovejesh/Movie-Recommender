@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 
 # 1. For build React app
-FROM node:lts AS development
+FROM node:lts-alpine AS development
 
 # Set working directory
 WORKDIR /app
@@ -26,16 +26,13 @@ RUN npm run build
 
 
 FROM development as dev-envs
-RUN <<EOF
-apt-get update
-apt-get install -y --no-install-recommends git
-EOF
+RUN apk update
+RUN apk add git
 
-RUN <<EOF
-useradd -s /bin/bash -m vscode
-groupadd docker
-usermod -aG docker vscode
-EOF
+RUN useradd -s /bin/bash -m vscode
+RUN groupadd docker
+RUN usermod -aG docker vscode
+
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
 CMD [ "npm", "start" ]
