@@ -20,11 +20,9 @@ CMD ["flask", "run"]
 
 FROM builder AS dev-envs
 
-RUN <<EOF
-apk update && apk upgrade --no-cache
-apk add git
-apk add curl
-EOF
+RUN apk update && apk upgrade
+
+RUN apk add git curl
 
 RUN <<EOF
 addgroup -S docker
