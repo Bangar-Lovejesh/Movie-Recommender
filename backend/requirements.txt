@@ -1,5 +1,6 @@
 Flask
 numpy
+psycopg2-binary
 python-dotenv
 SQLAlchemy
 flask-sqlalchemy
