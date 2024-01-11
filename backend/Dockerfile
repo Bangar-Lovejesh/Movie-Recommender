@@ -24,6 +24,9 @@ RUN apk update && apk upgrade
 
 RUN apk add git curl
 
+RUN apk add postgresql-dev gcc python3-dev musl-dev
+RUN pip install psycopg2
+
 RUN addgroup -S docker
 RUN adduser -S --shell /bin/bash --ingroup docker vscode
 RUN export $(cat .env | xargs) && curl --create-dirs -o $HOME/.postgresql/root.crt $CERT
