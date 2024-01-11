@@ -21,7 +21,7 @@ CMD ["flask", "run"]
 FROM builder AS dev-envs
 
 RUN <<EOF
-apk update
+RUN apk update && apk upgrade --no-cache
 apk add git
 apk add curl
 EOF
