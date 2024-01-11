@@ -8,13 +8,17 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 COPY . .
 
+ARG DATABASE_URL
+ARG CERT
+
 ENV FLASK_DEBUG 1
 ENV FLASK_APP src/app.py
 ENV FLASK_ENV development
 ENV FLASK_RUN_PORT 8000
 ENV FLASK_RUN_HOST 0.0.0.0
+ENV DATABASE_URL DATABASE_URL
+
 EXPOSE 8000
-ARG CERT
 
 CMD ["flask", "run"]
 
@@ -24,13 +28,9 @@ RUN apk update && apk upgrade
 
 RUN apk add git curl
 
-RUN apk add postgresql-dev gcc python3-dev musl-dev py3-psycopg2
-
-RUN pip install psycopg2
-
 RUN addgroup -S docker
 RUN adduser -S --shell /bin/bash --ingroup docker vscode
-RUN export $(cat .env | xargs) && curl --create-dirs -o $HOME/.postgresql/root.crt $CERT
+RUN curl --create-dirs -o $HOME/.postgresql/root.crt ${CERT}
 
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /

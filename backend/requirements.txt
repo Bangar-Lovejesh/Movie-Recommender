@@ -1,7 +1,7 @@
 Flask
 numpy
+psycopg2-binary
 python-dotenv
-SQLAlchemy
 flask-sqlalchemy
 cockroachdb
-sqlalchemy-cockroachdb
+sqlalchemy-cockroachdb==2.0.1

@@ -26,12 +26,11 @@ RUN npm run build
 
 
 FROM development as dev-envs
-RUN apk update
+RUN apk update && apk upgrade
 RUN apk add git
 
-RUN useradd -s /bin/bash -m vscode
-RUN groupadd docker
-RUN usermod -aG docker vscode
+RUN addgroup -S docker
+RUN adduser -S --shell /bin/bash --ingroup docker vscode
 
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
