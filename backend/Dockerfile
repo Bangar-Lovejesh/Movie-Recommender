@@ -24,12 +24,10 @@ RUN apk update && apk upgrade
 
 RUN apk add git curl
 
-RUN <<EOF
-addgroup -S docker
-adduser -S --shell /bin/bash --ingroup docker vscode
-export $(cat .env | xargs)
-curl --create-dirs -o $HOME/.postgresql/root.crt $CERT
-EOF
+RUN addgroup -S docker
+RUN adduser -S --shell /bin/bash --ingroup docker vscode
+RUN export $(cat .env | xargs)
+RUN curl --create-dirs -o $HOME/.postgresql/root.crt $CERT
 
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
