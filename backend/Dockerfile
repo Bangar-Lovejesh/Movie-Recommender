@@ -24,7 +24,8 @@ RUN apk update && apk upgrade
 
 RUN apk add git curl
 
-RUN apk add postgresql-dev gcc python3-dev musl-dev
+RUN apk add postgresql-dev gcc python3-dev musl-dev py3-psycopg2
+
 RUN pip install psycopg2
 
 RUN addgroup -S docker
