@@ -2,6 +2,9 @@ services:
   backend:
     build:
       context: ./backend
+      args:
+        CERT: ${CERT}
+        DATABASE_URL: ${DATABASE_URL}
       dockerfile: Dockerfile
     stop_signal: SIGINT
     ports:
