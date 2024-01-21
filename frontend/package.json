@@ -1,5 +1,5 @@
 {
-  "name": "movie-ui",
+  "name": "movie-recommender-ui",
   "version": "0.1.0",
   "proxy": "http://127.0.0.1:5000",
   "private": true,
@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.2",
+    "prettier": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
