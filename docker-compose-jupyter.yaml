@@ -5,5 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8888:8888
+    args:
+      CERT: ${CERT}
+      DATABASE_URL: ${DATABASE_URL}
     container_name: jupyter_notebook
     command: "start-notebook.sh --NotebookApp.token='test'"
