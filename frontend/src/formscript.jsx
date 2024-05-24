@@ -1,31 +1,32 @@
 import logo from "./logo.svg";
 import "./App.js";
 import { useRef, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import './formscript.css';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components'
 
 function Formscript() {
-  const [movie_name, set_movie_name] = useState("");
+  const [movieName, setMovieName] = useState("");
   const nav = useNavigate();
-  const [selected_criteria, set_selected_criteria] = useState([]);
+  const [selectedCriteria, setSelectedCriteria] = useState([]);
 
 
   function checkbox_change(e) {
     const { value, checked } = e.target;
-    set_selected_criteria((prev_criteria) =>
+    setSelectedCriteria((prevCriteria) =>
       checked
-        ? [...new Set([...prev_criteria, value])] // Add value to the set to remove duplicates
-        : prev_criteria.filter((criteria) => criteria !== value)
+        ? [...new Set([...prevCriteria, value])] // Add value to the set to remove duplicates
+        : prevCriteria.filter((criteria) => criteria !== value)
     );
   }
   function search(e) {
     e.preventDefault();
     nav("/result", {
       state: {
-        title:movie_name,
-        criteria: selected_criteria} });
+        title:movieName,
+        criteria: selectedCriteria} });
     // alert((e.target.movie_name));
   }
    return (
@@ -36,8 +37,8 @@ function Formscript() {
                <Form.Label className="form-label">Movie Name:</Form.Label>
                <Form.Control
                    type="text"
-                   value={movie_name}
-                   onChange={(e) => set_movie_name(e.target.value)}
+                   value={movieName}
+                   onChange={(e) => setMovieName(e.target.value)}
                />
              </Form.Group>
 

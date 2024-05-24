@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 # from dbl_connect import main
 from . import dbl_connect
 # from dbl_connect import get_movie
@@ -20,7 +20,18 @@ def test():
         for i in range(len(movie_list)):
             best_match.append({"id":i+1, "name":movie_list[i]})
         return best_match
+@app.route("/api/login", methods=["GET", "POST"], strict_slashes=False)
+def login():
+    data = request.get_json()
+    return jsonify(username=data["email"], password=data["password"]), 200
+    email = data["email"]
+    password = data["password"]
 
+
+
+@app.route("/api/register", methods=["GET", "POST"], strict_slashes=False)
+def register():
+    data = request.get_json()
 
 if __name__ == "__main__":
     app.run()

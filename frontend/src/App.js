@@ -1,7 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Formscript from "./formscript";
-import { useRef, useState } from "react";
+import Login_Page from "./login";
+import Register_Page from "./register";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Result from "./result";
 import {
   BrowserRouter as Router,
@@ -11,6 +14,7 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LoginPage from "./login";
 
 function App() {
   // const [genre,set_genre] = useState('');
@@ -19,6 +23,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route exact path="/login" element={<Login_Page />}/>
+          <Route exact path="/register" element={<Register_Page />}/>
           <Route exact path="/" element={<Formscript />} />
           <Route exact path="/result" element={<Result />} />
         </Routes>

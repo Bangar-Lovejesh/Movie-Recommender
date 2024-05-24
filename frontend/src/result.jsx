@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import './result.css';
+import axios from "axios";
 
 function Result() {
   const location = useLocation();
@@ -12,10 +13,7 @@ function Result() {
   const [loadingText, setLoadingText] = useState("loading");
   const has_fetched = useRef(false);
 
-  useEffect(() => {
-    if (has_fetched.current) return;
-    has_fetched.current = true;
-
+useEffect(() => {
     const loadingInterval = setInterval(() => {
       setLoadingText((prev) => {
         if (prev === "loading...") return "loading";
@@ -23,29 +21,30 @@ function Result() {
       });
     }, 500);
 
-
-
-    if (post.title && post.criteria) {
-      fetch("/api/result", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: post.title, criteria: post.criteria }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setStuff(data);
+    const fetchData = async () => {
+      if (post.title && post.criteria) {
+        try {
+          const response = await axios.post('/api/result', {
+            name: post.title,
+            criteria: post.criteria
+          });
+          setStuff(response.data);
           setLoading(false);
-          clearInterval(loadingInterval);
-        })
-        .catch(() => {
+        } catch (error) {
+          console.error('Error:', error);
           setLoading(false);
+        } finally {
           clearInterval(loadingInterval);
-        });
-    } else {
-      setLoading(false);
-      clearInterval(loadingInterval);
-    }
+        }
+      } else {
+        setLoading(false);
+        clearInterval(loadingInterval);
+      }
+    };
 
+    fetchData();
+
+    // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(loadingInterval);
   }, [post.title, post.criteria]);
 
