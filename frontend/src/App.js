@@ -1,8 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Formscript from "./form";
+import Formscript from "./formscript";
 import { useRef, useState } from "react";
-import Test from "./test";
+import Result from "./result";
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,7 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Formscript />} />
-          <Route exact path="/test" element={<Test />} />
+          <Route exact path="/result" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </>
