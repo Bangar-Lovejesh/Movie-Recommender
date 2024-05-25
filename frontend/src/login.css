@@ -37,3 +37,11 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   transition: background-color 0.3s, box-shadow 0.3s;
 }
+.formLabel {
+  font-size: 18px;
+}
+
+.button-container{
+display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;}

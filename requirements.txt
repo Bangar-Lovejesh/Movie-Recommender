@@ -4,3 +4,8 @@ isort
 black[jupyter]
 flake8
 nbqa
+
+Flask~=3.0.0
+numpy~=1.26.2
+python-dotenv~=1.0.0
+SQLAlchemy~=2.0.25

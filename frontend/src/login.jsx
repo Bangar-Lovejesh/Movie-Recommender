@@ -5,6 +5,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import './login.css';
 import styled from "styled-components";
 import {Link, useNavigate} from "react-router-dom";
+import {useAuth} from "./AuthContext";
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -15,6 +16,7 @@ function Login_Page() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const nav = useNavigate();
+  const {login} = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,8 +24,8 @@ function Login_Page() {
     try {
       const response = await axios.post('/api/login', {email, password});
       // Handle successful login
-      console.log(response.data);
-      nav('/');
+      login();
+      nav('/search');
 
     } catch (err) {
       // Handle login error
@@ -32,13 +34,17 @@ function Login_Page() {
   };
 
   return (
-      <div className="login-container">
-        <Container className="login-form">
+      <html>
+      <head>
+        <title>My Title</title>
+      </head>
+  <div className="login-container">
+    <Container className="login-form">
           <h2 className="text-center mb-4">Login</h2>
           {error && <div className="alert alert-danger">{error}</div>}
           <Form onSubmit={handleLogin}>
             <Form.Group controlId="formEmail">
-              <Form.Label>Email:</Form.Label>
+              <Form.Label className="formLabel">Email:</Form.Label>
               <Form.Control
                   style={{ marginBottom: '2rem' }}
                   type="email"
@@ -48,7 +54,7 @@ function Login_Page() {
               />
             </Form.Group>
             <Form.Group controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
+              <Form.Label className="formLabel">Password:</Form.Label>
               <Form.Control
                   type="password"
                   placeholder="Enter password"
@@ -56,17 +62,16 @@ function Login_Page() {
                   onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <ButtonContainer>
+            <div className="button-container">
             <Button variant="primary" type="submit" className="login-button">
               Login
             </Button>
-            <Link to="/register" className="btn btn-secondary register-button">
-              Register
-            </Link>
-          </ButtonContainer>
+            <Button onClick={()=>{nav('/register')}} className="login-button" >Register</Button>
+          </div>
           </Form>
         </Container>
       </div>
+      </html>
   );
 };
 

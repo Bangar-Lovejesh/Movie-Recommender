@@ -1,8 +1,9 @@
-import logo from "./logo.svg";
+
 import "./App.js";
 import { useRef, useState } from "react";
-
+import { useAuth } from './AuthContext';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import './formscript.css';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components'
@@ -10,8 +11,10 @@ import styled from 'styled-components'
 function Formscript() {
   const [movieName, setMovieName] = useState("");
   const nav = useNavigate();
+  const [dropdownValue, setDropdownValue] = useState('');
   const [selectedCriteria, setSelectedCriteria] = useState([]);
-
+  const { logout } = useAuth();
+  const [searchResults, setSearchResults] = useState([]);
 
   function checkbox_change(e) {
     const { value, checked } = e.target;
@@ -23,6 +26,10 @@ function Formscript() {
   }
   function search(e) {
     e.preventDefault();
+    if(movieName.trim() === ""){
+      alert("Please enter a movie name");
+      return;
+    }
     nav("/result", {
       state: {
         title:movieName,
@@ -69,10 +76,13 @@ function Formscript() {
                </div>
              </Form.Group>
 
-             <div className="d-flex justify-content-center">
+             <div className="button-container">
                <Button className="fancy-button" variant="primary" type="submit">
                  Submit
                </Button>
+               <Button className="fancy-button" variant="secondary" onClick={logout}>
+              Logout
+            </Button>
              </div>
            </Form>
          </Container>

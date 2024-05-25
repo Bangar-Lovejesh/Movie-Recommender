@@ -1,5 +1,8 @@
-import logo from "./logo.svg";
+
 import "./App.css";
+import React from 'react';
+import { AuthProvider } from './AuthContext';
+import PrivateRoute from './PrivateRoute';
 import Formscript from "./formscript";
 import Login_Page from "./login";
 import Register_Page from "./register";
@@ -11,26 +14,43 @@ import {
   Routes,
   Route,
   Navigate,
-  BrowserRouter,
 } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import LoginPage from "./login";
 
 function App() {
-  // const [genre,set_genre] = useState('');
 
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/login" element={<Login_Page />}/>
-          <Route exact path="/register" element={<Register_Page />}/>
-          <Route exact path="/" element={<Formscript />} />
-          <Route exact path="/result" element={<Result />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+      <html>
+      <AuthProvider>
+
+          <Router>
+              <Routes>
+                  <Route exact path="/login" element={<Login_Page/>}/>
+                  <Route exact path="/register" element={<Register_Page/>}/>
+                  <Route exact path="/search" element={
+                      <PrivateRoute>
+                          <Formscript/>
+                      </PrivateRoute>
+                  }/>
+                  <Route exact path="/result"
+                         element={
+                             <PrivateRoute>
+
+                                 <Result/>
+                             </PrivateRoute>}/>
+                  <Route
+                      path="/"
+                      element={
+                          <PrivateRoute>
+                              <Navigate to="/search"/>
+                          </PrivateRoute>
+                      }
+                  />
+              </Routes>
+          </Router>
+      </AuthProvider>
+      </html>
+  )
+      ;
 }
 
 export default App;
